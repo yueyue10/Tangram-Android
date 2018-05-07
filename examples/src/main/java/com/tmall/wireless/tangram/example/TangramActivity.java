@@ -174,6 +174,7 @@ public class TangramActivity extends Activity {
                 new ViewHolderCreator<>(R.layout.item_holder, TestViewHolder.class, TextView.class));
         builder.registerCell(199,SingleImageView.class);
         builder.registerVirtualView("vvtest");
+        builder.registerVirtualView("Debug");
         //Step 4: new engine
         engine = builder.build();
         engine.setVirtualViewTemplate(VVTEST.BIN);
@@ -206,7 +207,7 @@ public class TangramActivity extends Activity {
                 requestCreator.into(imageTarget);
             }
         });
-        Utils.setUedScreenWidth(720);
+        Utils.setUedScreenWidth(620);
 
         //Step 5: add card load support if you have card that loading cells async
         engine.addCardLoadSupport(new CardLoadSupport(

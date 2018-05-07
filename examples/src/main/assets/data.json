@@ -4,26 +4,30 @@
     "items": [
       {
         "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
-        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.pnga",
         "title": "标题1",
-        "type": "vvtest"
+        "type": "vvtest",
+        "subtitle": "副标题1"
       },
       {
         "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
         "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
         "title": "标题2",
+        "subtitle": "副标题2",
         "type": "vvtest"
       },
       {
         "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
         "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
         "title": "标题3",
+        "subtitle": "副标题3",
         "type": "vvtest"
       },
       {
         "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
         "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
         "title": "标题4",
+        "subtitle": "副标题4",
         "type": "vvtest"
       }
     ]
@@ -77,12 +81,12 @@
     },
     "items": [
       {
-        "bizId":"item1",
+        "bizId": "item1",
         "type": 110,
         "msg": "info1"
       },
       {
-        "bizId":"item2",
+        "bizId": "item2",
         "type": 110,
         "msg": "info2"
       }
@@ -108,38 +112,32 @@
       {
         "type": 1,
         "msg": "info1",
-        "style": {
-        }
+        "style": {}
       },
       {
         "type": 1,
         "msg": "info2",
-        "style": {
-        }
+        "style": {}
       },
       {
         "type": 1,
         "msg": "info3",
-        "style": {
-        }
+        "style": {}
       },
       {
         "type": 1,
         "msg": "info4",
-        "style": {
-        }
+        "style": {}
       },
       {
         "type": 1,
         "msg": "info5",
-        "style": {
-        }
+        "style": {}
       },
       {
         "type": 1,
         "msg": "info6",
-        "style": {
-        }
+        "style": {}
       }
     ]
   },
@@ -168,36 +166,50 @@
             "type": 1,
             "msg": "info1",
             "style": {
+              "height": 100,
+              "content": "container-banner"
             }
           },
           {
             "type": 1,
             "msg": "info2",
             "style": {
+              "height": 100
             }
           },
           {
             "type": 1,
             "msg": "info3",
             "style": {
+              "height": 100
             }
           },
           {
             "type": 1,
             "msg": "info4",
             "style": {
+              "height": 100
             }
           },
           {
             "type": 1,
             "msg": "info5",
             "style": {
+              "height": 100
             }
           },
           {
             "type": 1,
             "msg": "info6",
             "style": {
+              "height": 100
+            }
+          },
+          {
+            "type": 1,
+            "msg": "info7",
+            "style": {
+              "height": 100
             }
           }
         ]
@@ -229,37 +241,33 @@
             "type": 1,
             "msg": "info1",
             "style": {
+              "content": "container-scroll"
             }
           },
           {
             "type": 1,
             "msg": "info2",
-            "style": {
-            }
+            "style": {}
           },
           {
             "type": 1,
             "msg": "info3",
-            "style": {
-            }
+            "style": {}
           },
           {
             "type": 1,
             "msg": "info4",
-            "style": {
-            }
+            "style": {}
           },
           {
             "type": 1,
             "msg": "info5",
-            "style": {
-            }
+            "style": {}
           },
           {
             "type": 1,
             "msg": "info6",
-            "style": {
-            }
+            "style": {}
           }
         ]
       }
@@ -270,41 +278,62 @@
     "style": {
       "hGap": "15",
       "vGap": "15",
-      "margin": [null, null, null, null],
-      "padding": ["15", "15", "15", "15"]
+      "margin": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "padding": [
+        "15",
+        "15",
+        "15",
+        "15"
+      ]
     },
     "type": 25,
-    "items": [{
-      "title": "A",
-      "type": 199
-    }, {
-      "title": "B",
-      "type": 199
-    }, {
-      "title": "C",
-      "type": 199
-    }, {
-      "title": "D",
-      "type": 199
-    }, {
-      "title": "E",
-      "type": 199
-    }, {
-      "title": "F",
-      "type": 199
-    }, {
-      "title": "G",
-      "type": 199
-    }, {
-      "title": "H",
-      "type": 199
-    }, {
-      "title": "I",
-      "type": 199
-    }, {
-      "title": "G",
-      "type": 199
-    }]
+    "items": [
+      {
+        "title": "A",
+        "type": 199
+      },
+      {
+        "title": "B",
+        "type": 199
+      },
+      {
+        "title": "C",
+        "type": 199
+      },
+      {
+        "title": "D",
+        "type": 199
+      },
+      {
+        "title": "E",
+        "type": 199
+      },
+      {
+        "title": "F",
+        "type": 199
+      },
+      {
+        "title": "G",
+        "type": 199
+      },
+      {
+        "title": "H",
+        "type": 199
+      },
+      {
+        "title": "I",
+        "type": 199
+      },
+      {
+        "title": "G",
+        "type": 199
+      }
+    ]
   },
   {
     "type": 1,
@@ -326,7 +355,6 @@
     "type": 20,
     "style": {
       "sticky": "start"
-
     },
     "items": [
       {
@@ -334,7 +362,6 @@
         "msg": "sticky",
         "style": {
           "height": 80
-
         }
       }
     ]
@@ -359,38 +386,32 @@
       {
         "type": 1,
         "msg": "info11",
-        "style": {
-        }
+        "style": {}
       },
       {
         "type": 1,
         "msg": "info12",
-        "style": {
-        }
+        "style": {}
       },
       {
         "type": 1,
         "msg": "info13",
-        "style": {
-        }
+        "style": {}
       },
       {
         "type": 1,
         "msg": "info14",
-        "style": {
-        }
+        "style": {}
       },
       {
         "type": 1,
         "msg": "info15",
-        "style": {
-        }
+        "style": {}
       },
       {
         "type": 1,
         "msg": "info16",
-        "style": {
-        }
+        "style": {}
       }
     ]
   },
@@ -434,8 +455,7 @@
         "type": "10",
         "action": "xxx",
         "imgUrl": "https://gw.alicdn.com/tfs/TB1pdJFQpXXXXbUXpXXXXXXXXXX-750-243.png",
-        "style": {
-        }
+        "style": {}
       }
     ]
   },
@@ -587,8 +607,7 @@
   },
   {
     "type": 5,
-    "style": {
-    },
+    "style": {},
     "items": [
       {
         "type": 1
@@ -618,8 +637,7 @@
     "style": {
       "autoExpand": true
     },
-    "items": [
-    ]
+    "items": []
   },
   {
     "type": "4",
@@ -696,7 +714,6 @@
     "type": "1",
     "load": "com.tmall.request.load.more",
     "loadType": 1,
-    "items": [
-    ]
+    "items": []
   }
 ]

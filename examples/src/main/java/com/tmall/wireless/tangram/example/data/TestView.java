@@ -77,7 +77,8 @@ public class TestView extends FrameLayout implements ITangramViewLifeCycle {
         textView.setText(
                 cell.id + " pos: " + pos + " " + parent + " " + cell
                         .optParam("msg"));
-
+        textView.setHeight(cell.optJsonObjectParam("style").optInt("height"));
+        String aa=cell.optJsonObjectParam("style").optString("content");
         if (pos > 57) {
             textView.setBackgroundColor(0x66cccf00 + (pos - 50) * 128);
         } else if (pos % 2 == 0) {
@@ -85,6 +86,8 @@ public class TestView extends FrameLayout implements ITangramViewLifeCycle {
         } else {
             textView.setBackgroundColor(0xcceeeeee);
         }
+        if(aa!=null&&!aa.equals(""))
+            textView.setText(aa);
     }
 
     @Override
