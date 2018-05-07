@@ -1,12 +1,14 @@
 [
   {
     "type": "container-oneColumn",
+    //      container-oneColumn：单列(一排一)
     "items": [
       {
         "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
-        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.pnga",
+        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
         "title": "标题1",
         "type": "vvtest",
+        //        vvtest是引用assets.xml里面的vvtest.xml布局
         "subtitle": "副标题1"
       },
       {
@@ -76,6 +78,7 @@
   {
     "id": "banner1",
     "type": 1,
+    //1：使用自定义布局TestView继承自FrameLayout，有自己的布局layout/item.xml
     "style": {
       "aspectRatio": 3.223
     },
@@ -83,6 +86,7 @@
       {
         "bizId": "item1",
         "type": 110,
+        //110：使用原生控件TextView，在TestView里面创建并被使用
         "msg": "info1"
       },
       {
@@ -93,6 +97,7 @@
     ]
   },
   {
+    //因为没有type所以不显示
     "style": {
       "pageWidth": 200,
       "pageHeight": 100,
@@ -143,10 +148,12 @@
   },
   {
     "type": "container-oneColumn",
+    //container-oneColumn:单列(一排一)
     "items": [
       {
         "id": "banner1",
         "type": "container-banner",
+        //container-banner:轮播图布局
         "style": {
           "indicatorMargin": "5",
           "infinite": "true",
@@ -218,9 +225,11 @@
   },
   {
     "type": "container-oneColumn",
+    //container-oneColunm:单列(一排一)
     "items": [
       {
         "type": "container-scroll",
+        //container-scroll:线性滚动,不像轮播一样具有一页一页的效果
         "style": {
           "pageWidth": 200,
           "pageHeight": 100,
@@ -292,10 +301,12 @@
       ]
     },
     "type": 25,
+    //25:api里面的九宫格布局，StaggeredCard
     "items": [
       {
         "title": "A",
         "type": 199
+        //199：自定义SingleImageView继承自LinearLayout，添加了一个带有背景的ImageView和一个TextView
       },
       {
         "title": "B",
@@ -337,22 +348,25 @@
   },
   {
     "type": 1,
+    //1：使用自定义布局TestView继承自FrameLayout，用来存放其他控件
     "style": {
       "aspectRatio": 3.223
     },
     "items": [
       {
         "type": 10,
-        "imgUrl": "https://gw.alicdn.com/tfs/TB1pdJFQpXXXXbUXpXXXXXXXXXX-750-243.png"
+        //10：使用自定义布局SimpleImgView继承自RatioImageView用来展示图片
+        "imgUrl": "http://pic33.photophoto.cn/20141130/0036036820486922_b.jpg"
       },
       {
         "type": 10,
-        "imgUrl": "https://gw.alicdn.com/tfs/TB1pdJFQpXXXXbUXpXXXXXXXXXX-750-243.png"
+        "imgUrl": "http://g.hiphotos.baidu.com/image/pic/item/f3d3572c11dfa9ec8c2d744c6ed0f703918fc16d.jpg"
       }
     ]
   },
   {
     "type": 20,
+    //20(container-sticky)：吸顶/吸底，碰到Tangram的顶端或底端就吸住。
     "style": {
       "sticky": "start"
     },
