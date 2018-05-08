@@ -627,9 +627,11 @@
   },
   {
     "type": 28,
+    //28：container-scrollFix>固定。滚动固定(滚动到某个布局的时候，出现并固定)
     "id": "scrollFixShowOnEnter",
     "style": {
       "showType": "showONEnter"
+      //showOnEnter:前一个显示时显示/showOnLeave:前一个消失时显示/always:永远显示(默认永远显示)
     },
     "items": [
       {
@@ -643,6 +645,7 @@
   },
   {
     "type": 1,
+    //1:自定义TestView
     "id": "dividerShow",
     "items": [
       {
@@ -653,6 +656,7 @@
   },
   {
     "type": 5,
+    //5:container-onePlus3。一拖3布局。
     "style": {
       "bgColor": "#e3e3e3",
       "cols": [
@@ -661,16 +665,28 @@
     },
     "items": [
       {
-        "type": 1
+        "type": 1,
+        "style": {
+          "content": "item1"
+        }
       },
       {
-        "type": 1
+        "type": 1,
+        "style": {
+          "content": "item2"
+        }
       },
       {
-        "type": 1
+        "type": 1,
+        "style": {
+          "content": "item3"
+        }
       },
       {
-        "type": 1
+        "type": 1,
+        "style": {
+          "content": "item4"
+        }
       }
     ]
   },
@@ -681,10 +697,12 @@
         40
       ]
     },
+    //只有三条数据时显示一拖二布局
     "items": [
       {
         "type": 1,
         "style": {
+          //给每个item设置边距
           "margin": [
             4,
             4,
@@ -713,11 +731,14 @@
     "type": 5,
     "style": {},
     "items": [
+      //只有两条数据时，显示一拖一布局
       {
-        "type": 1
+        "type": 1,
+        "msg": "item1"
       },
       {
-        "type": 1
+        "type": 1,
+        "msg": "item2"
       }
     ]
   },
