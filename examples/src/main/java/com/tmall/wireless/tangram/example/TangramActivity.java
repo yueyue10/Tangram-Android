@@ -207,7 +207,7 @@ public class TangramActivity extends Activity {
                 requestCreator.into(imageTarget);
             }
         });
-        Utils.setUedScreenWidth(620);
+        Utils.setUedScreenWidth(720);
 
         //Step 5: add card load support if you have card that loading cells async
         engine.addCardLoadSupport(new CardLoadSupport(
@@ -301,7 +301,7 @@ public class TangramActivity extends Activity {
         });
 
         //Step 9: set an offset to fix card
-        engine.getLayoutManager().setFixOffset(0, 40, 0, 0);
+        engine.getLayoutManager().setFixOffset(0, 0, 0, 0);
 
         //Step 10: get tangram data and pass it to engine
         String json = new String(getAssertsFile(this, "data.json"));
@@ -320,7 +320,7 @@ public class TangramActivity extends Activity {
         if (engine != null) {
             engine.destroy();
         }
-        ImageUtils.setImageSetter(null);
+//        ImageUtils.setImageSetter(null);
     }
 
     public static byte[] getAssertsFile(Context context, String fileName) {

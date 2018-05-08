@@ -56,7 +56,7 @@ public class TestView extends FrameLayout implements ITangramViewLifeCycle {
         init();
     }
 
-    private void init(){
+    private void init() {
         inflate(getContext(), R.layout.item, this);
         textView = (TextView) findViewById(R.id.title);
     }
@@ -74,11 +74,10 @@ public class TestView extends FrameLayout implements ITangramViewLifeCycle {
         if (cell.parent != null) {
             parent = cell.parent.getClass().getSimpleName();
         }
-        textView.setText(
-                cell.id + " pos: " + pos + " " + parent + " " + cell
-                        .optParam("msg"));
+        textView.setText(cell.id + " pos: " + pos + " " + parent + " " + cell.optParam("msg"));
         textView.setHeight(cell.optJsonObjectParam("style").optInt("height"));
-        String aa=cell.optJsonObjectParam("style").optString("content");
+        textView.setWidth(cell.optJsonObjectParam("style").optInt("width"));
+        String aa = cell.optJsonObjectParam("style").optString("content");
         if (pos > 57) {
             textView.setBackgroundColor(0x66cccf00 + (pos - 50) * 128);
         } else if (pos % 2 == 0) {
@@ -86,7 +85,7 @@ public class TestView extends FrameLayout implements ITangramViewLifeCycle {
         } else {
             textView.setBackgroundColor(0xcceeeeee);
         }
-        if(aa!=null&&!aa.equals(""))
+        if (aa != null && !aa.equals(""))
             textView.setText(aa);
     }
 

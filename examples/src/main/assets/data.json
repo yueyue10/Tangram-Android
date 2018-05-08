@@ -174,7 +174,7 @@
             "msg": "info1",
             "style": {
               "height": 100,
-              "content": "container-banner"
+              "content": "将container-banner放在container-oneColumn里面"
             }
           },
           {
@@ -220,6 +220,129 @@
             }
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "banner1",
+    "type": "container-banner",
+    //container-banner:轮播图布局
+    "style": {
+      "indicatorMargin": "5",
+      "infinite": "true",
+      "indicatorImg2": "https://img.alicdn.com/tps/TB1XRNFNXXXXXXKXXXXXXXXXXXX-32-4.png",
+      "indicatorImg1": "https://img.alicdn.com/tps/TB16i4qNXXXXXbBXFXXXXXXXXXX-32-4.png",
+      "scrollMarginLeft": "10",
+      "indicatorGap": "2",
+      "indicatorHeight": "1.5",
+      "itemRatio": "2.654",
+      "scrollMarginRight": "10",
+      "indicatorGravity": "center",
+      "hGap": "20",
+      "height": 200
+    },
+    "items": [
+      {
+        "type": 1,
+        "msg": "info1",
+        "style": {
+          "height": 100,
+          "content": "单独使用container-banner"
+        }
+      },
+      {
+        "type": 1,
+        "msg": "info2",
+        "style": {
+          "height": 100
+        }
+      },
+      {
+        "type": 1,
+        "msg": "info3",
+        "style": {
+          "height": 100
+        }
+      },
+      {
+        "type": 1,
+        "msg": "info4",
+        "style": {
+          "height": 100
+        }
+      },
+      {
+        "type": 1,
+        "msg": "info5",
+        "style": {
+          "height": 100
+        }
+      },
+      {
+        "type": 1,
+        "msg": "info6",
+        "style": {
+          "height": 100
+        }
+      },
+      {
+        "type": 1,
+        "msg": "info7",
+        "style": {
+          "height": 100
+        }
+      }
+    ]
+  },
+  {
+    "type": "container-banner",
+    //container-banner:轮播滚动布局
+    "id": "banner2",
+    "style": {
+      "indicatorImg1": "https://gw.alicdn.com/tps/TB16RaxLpXXXXbIXFXXXXXXXXXX-14-14.png",
+      "indicatorImg2": "https://gw.alicdn.com/tps/TB1m79uLpXXXXXUXVXXXXXXXXXX-18-16.png",
+      "indicatorGravity": "center",
+      "indicatorPosition": "inside",
+      "indicatorMargin": 10,
+      "indicatorGap": 2,
+      "scrollMarginLeft": 20,
+      "scrollMarginRight": 20,
+      "hGap": 12,
+      "pageRatio": 0.5,
+      "bgColor": "#ffffff"
+    },
+    "items": [
+      {
+        "type": 1,
+        "msg": "info11",
+        "style": {
+          "width": "720"
+        }
+      },
+      {
+        "type": 1,
+        "msg": "info12",
+        "style": {}
+      },
+      {
+        "type": 1,
+        "msg": "info13",
+        "style": {}
+      },
+      {
+        "type": 1,
+        "msg": "info14",
+        "style": {}
+      },
+      {
+        "type": 1,
+        "msg": "info15",
+        "style": {}
+      },
+      {
+        "type": 1,
+        "msg": "info16",
+        "style": {}
       }
     ]
   },
@@ -368,11 +491,13 @@
     "type": 20,
     //20(container-sticky)：吸顶/吸底，碰到Tangram的顶端或底端就吸住。
     "style": {
-      "sticky": "start"
+      "sticky": "start",
+      "width": "match_parent"
     },
     "items": [
       {
-        "type": 1,
+        "type": 110,
+        //110:原生控件TextView。这里如果用1长度为屏幕的一半还不知道原因。
         "msg": "sticky",
         "style": {
           "height": 80
@@ -381,70 +506,26 @@
     ]
   },
   {
-    "type": "container-banner",
-    "id": "banner2",
-    "style": {
-      "indicatorImg1": "https://gw.alicdn.com/tps/TB16RaxLpXXXXbIXFXXXXXXXXXX-14-14.png",
-      "indicatorImg2": "https://gw.alicdn.com/tps/TB1m79uLpXXXXXUXVXXXXXXXXXX-18-16.png",
-      "indicatorGravity": "center",
-      "indicatorPosition": "inside",
-      "indicatorMargin": 10,
-      "indicatorGap": 2,
-      "scrollMarginLeft": 20,
-      "scrollMarginRight": 20,
-      "hGap": 12,
-      "pageRatio": 0.5,
-      "bgColor": "#ffffff"
-    },
-    "items": [
-      {
-        "type": 1,
-        "msg": "info11",
-        "style": {}
-      },
-      {
-        "type": 1,
-        "msg": "info12",
-        "style": {}
-      },
-      {
-        "type": 1,
-        "msg": "info13",
-        "style": {}
-      },
-      {
-        "type": 1,
-        "msg": "info14",
-        "style": {}
-      },
-      {
-        "type": 1,
-        "msg": "info15",
-        "style": {}
-      },
-      {
-        "type": 1,
-        "msg": "info16",
-        "style": {}
-      }
-    ]
-  },
-  {
     "type": "5",
+    //5:一拖三布局,1+3
     "style": {
+      //整体宽高比
       "aspectRatio": "1.778",
+      //设定宽度比例
       "cols": [
-        43.467
+        40
       ],
+      //设定上下比例
       "rows": [
-        43.602
+        60
       ]
     },
     "items": [
       {
         "type": "10",
+        //10:自定义SimpleImgView
         "action": "xxx",
-        "imgUrl": "https://gw.alicdn.com/tfs/TB1pdJFQpXXXXbUXpXXXXXXXXXX-750-243.png",
+        "imgUrl": "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3556314227,2979286810&fm=27&gp=0.jpg",
         "style": {
           "margin": "[0,1,0,0]"
         }
@@ -452,7 +533,7 @@
       {
         "type": "10",
         "action": "xxx",
-        "imgUrl": "https://gw.alicdn.com/tfs/TB1pdJFQpXXXXbUXpXXXXXXXXXX-750-243.png",
+        "imgUrl": "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1179543221,3969948886&fm=200&gp=0.jpg",
         "style": {
           "margin": "[0,0,1,0]"
         }
@@ -460,7 +541,7 @@
       {
         "type": "10",
         "action": "xxx",
-        "imgUrl": "https://gw.alicdn.com/tfs/TB1pdJFQpXXXXbUXpXXXXXXXXXX-750-243.png",
+        "imgUrl": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525764612367&di=5840dd758259909cbe572b40eb98c07d&imgtype=0&src=http%3A%2F%2Fpic2.cxtuku.com%2F00%2F16%2F28%2Fb87135e670e6.jpg",
         "style": {
           "margin": "[0,1,0,0]"
         }
@@ -468,43 +549,51 @@
       {
         "type": "10",
         "action": "xxx",
-        "imgUrl": "https://gw.alicdn.com/tfs/TB1pdJFQpXXXXbUXpXXXXXXXXXX-750-243.png",
+        "imgUrl": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525764612367&di=5840dd758259909cbe572b40eb98c07d&imgtype=0&src=http%3A%2F%2Fpic2.cxtuku.com%2F00%2F16%2F28%2Fb87135e670e6.jpg",
         "style": {}
       }
     ]
   },
   {
     "type": "2",
+    //container-twoColumn<流式布局:双列
     "style": {
       "hGap": 10,
       "vGap": 10,
+      //每列的百分比，如果是N列，可以只写Array中只写N-1项
       "cols": [
         35.5
       ]
     },
     "items": [
       {
-        "type": 1
+        "type": 1,
+        "msg": "item1"
       },
       {
-        "type": 1
+        "type": 1,
+        "msg": "item2"
       },
       {
-        "type": 1
+        "type": 1,
+        "msg": "item3"
       },
       {
-        "type": 1
+        "type": 1,
+        "msg": "item4"
       }
     ]
   },
   {
     "type": "3",
+    //3:TripleColunmCard:三部分的布局(三列布局)>流式(网格)布局
     "items": [
       {
         "type": 1,
         "msg": "block",
         "style": {
           "display": "block"
+          //独占一行的属性
         }
       },
       {
@@ -520,6 +609,7 @@
   },
   {
     "type": 4,
+    //4:FourColunmCard:(四列布局)>流式(网格)布局
     "items": [
       {
         "type": 1
