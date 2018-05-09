@@ -744,6 +744,7 @@
   },
   {
     "type": "1",
+    //1：container-oneColumn<单列(一排一)布局。
     "items": [
       {
         "type": 1
@@ -762,10 +763,13 @@
     "style": {
       "autoExpand": true
     },
-    "items": []
+    "items": [
+      //数据异步获取
+    ]
   },
   {
     "type": "4",
+    //4：container-FourColumn>四列.只有内间距没有外间距
     "style": {
       "autoExpand": true,
       "enableColspan": true,
@@ -777,6 +781,7 @@
         "type": 1,
         "style": {
           "colspan": 2
+          //占用两个单元宽度
         }
       },
       {
@@ -812,14 +817,18 @@
     ]
   },
   {
+    //    "type": "container-fix",
+    //container-fix:固定顶部或者底部，根据属性指定.
     "style": {
       "align": "bottom_left",
       "x": 200,
-      "y": 100
+      "y": 100,
+      "visibility": false
     },
     "items": [
       {
         "type": "2",
+        //2:SimpleImgView显示图片
         "action": "xxx",
         "imgUrl": "https://img.alicdn.com/tps/TB11Y5hPVXXXXbaXpXXXXXXXXXX-186-158.png",
         "style": {
@@ -839,6 +848,8 @@
     "type": "1",
     "load": "com.tmall.request.load.more",
     "loadType": 1,
-    "items": []
+    "items": [
+      //异步获取数据
+    ]
   }
 ]
