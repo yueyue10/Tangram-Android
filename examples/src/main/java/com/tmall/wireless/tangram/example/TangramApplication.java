@@ -25,6 +25,8 @@
 package com.tmall.wireless.tangram.example;
 
 import android.app.Application;
+
+import com.socks.library.KLog;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -40,5 +42,6 @@ public class TangramApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Picasso.setSingletonInstance(new Picasso.Builder(this).loggingEnabled(true).build());
+        KLog.init(BuildConfig.LOG_DEBUG,"Klog");
     }
 }

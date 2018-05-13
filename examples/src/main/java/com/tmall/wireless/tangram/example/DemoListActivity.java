@@ -39,6 +39,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.zyj.ui.TravelsAc;
+
 /**
  * Created by longerian on 2017/7/24.
  *
@@ -65,13 +67,17 @@ public class DemoListActivity extends ListActivity {
         bizItems.put("name", "自定义数据解析");
         bizItems.put("class", TangramDataParserActivity.class.getName());
         list.add(bizItems);
+        HashMap<String, String> travels = new HashMap<String, String>();
+        travels.put("name", "行程单列表");
+        travels.put("class", TravelsAc.class.getName());
+        list.add(travels);
         ListAdapter listAdapter = new SimpleAdapter(this, list, android.R.layout.simple_list_item_1, new String[]{"name"}, new int[]{android.R.id.text1});
         setListAdapter(listAdapter);
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        Map<String, String> item = (Map<String, String>)l.getItemAtPosition(position);
+        Map<String, String> item = (Map<String, String>) l.getItemAtPosition(position);
         String className = item.get("class");
         if (className != null) {
             Intent intent = new Intent();

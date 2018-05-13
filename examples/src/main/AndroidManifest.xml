@@ -49,6 +49,7 @@
         </activity>
         <activity android:name="com.tmall.wireless.tangram.example.TangramDataParserActivity">
         </activity>
+        <activity android:name="com.zyj.ui.TravelsAc"/>
     </application>
 
 </manifest>

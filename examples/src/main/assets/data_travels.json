@@ -1,0 +1,70 @@
+[
+  {
+    "type": "container-oneColumn",
+    "style": {
+      "vGap": 10,
+      "bgColor": "#ececec"
+    },
+    "items": [
+      {
+        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.pnga",
+        "title": "标题1",
+        "type": "vvtest"
+      },
+      {
+        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "imgUrl": "https://t10.baidu.com/it/u=2115052398,3032439749&fm=173&app=25&f=JPEG?w=600&h=337&s=198CA35DD27042261229B56A0300A032",
+        "title": "标题2",
+        "type": "TravelItem",
+        "top_layout_margin": "20rp"
+      },
+      {
+        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "imgUrl": "https://t10.baidu.com/it/u=2115052398,3032439749&fm=173&app=25&f=JPEG?w=600&h=337&s=198CA35DD27042261229B56A0300A032",
+        "title": "标题3",
+        "type": "TravelItem",
+        "top_layout_margin": "20rp"
+      },
+      {
+        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "imgUrl": "https://t10.baidu.com/it/u=2115052398,3032439749&fm=173&app=25&f=JPEG?w=600&h=337&s=198CA35DD27042261229B56A0300A032",
+        "title": "标题4",
+        "type": "TravelItem",
+        "top_layout_margin": "20rp"
+      }
+    ]
+  },
+  {
+    "type": "container-oneColumn",
+    "items": [
+      {
+        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.pnga",
+        "title": "标题1",
+        "type": "1"
+      },
+      {
+        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "title": "标题2",
+        "type": "1"
+      },
+      {
+        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "title": "标题3",
+        "type": "1"
+      },
+      {
+        "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
+        "title": "标题4",
+        "type": "1"
+      }
+    ]
+  }
+]
