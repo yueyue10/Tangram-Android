@@ -1,8 +1,5 @@
 package com.zyj.ui;
 
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -15,7 +12,6 @@ import com.libra.Utils;
 import com.socks.library.KLog;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
-import com.squareup.picasso.Target;
 import com.tmall.wireless.tangram.TangramBuilder;
 import com.tmall.wireless.tangram.TangramEngine;
 import com.tmall.wireless.tangram.example.R;
@@ -28,19 +24,30 @@ import com.tmall.wireless.vaf.framework.VafContext;
 import com.tmall.wireless.vaf.virtualview.Helper.ImageLoader;
 import com.tmall.wireless.vaf.virtualview.view.image.ImageBase;
 import com.zyj.ZUtils;
+import com.zyj.retrofit.AppConfig;
+import com.zyj.retrofit.GetRequest_Interface;
+import com.zyj.retrofit.Translation;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
  * Created by zhaoyuejun on 2018/5/12.
  */
 
-public class TravelsAc extends Activity {
+public class TravelsAc extends BaseActivity {
 
     private Handler mHandler;
     TangramEngine tangramEngine;
@@ -115,49 +122,47 @@ public class TravelsAc extends Activity {
         //Step 9: set an offset to fix card
         tangramEngine.getLayoutManager().setFixOffset(0, 0, 0, 0);
         //Step 10: get tangram data and pass it to engine
-        String json = new String(ZUtils.getAssertsFile(this, "data_travels.json"));
-        JSONArray data = null;
-        try {
-            data = new JSONArray(json);
-            tangramEngine.setData(data);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        request1();
     }
 
-    private static class ImageTarget implements Target {
-
-        ImageBase mImageBase;
-        ImageLoader.Listener mListener;
-
-        public ImageTarget(ImageBase imageBase) {
-            mImageBase = imageBase;
-        }
-
-        public ImageTarget(ImageLoader.Listener listener) {
-            mListener = listener;
-        }
-
-        @Override
-        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-            mImageBase.setBitmap(bitmap, true);
-            if (mListener != null) {
-                mListener.onImageLoadSuccess(bitmap);
+    /**
+     * 第二种请求，得到原始的json数据
+     */
+    public void request1() {
+        //步骤4:创建Retrofit对象
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(AppConfig.baseUrl) // 设置 网络请求 Url
+                .build();
+        // 步骤5:创建 网络请求接口 的实例
+        GetRequest_Interface request = retrofit.create(GetRequest_Interface.class);
+        //对 发送请求 进行封装
+        Call<ResponseBody> call = request.getTravelDetails();
+        //步骤6:发送网络请求(异步)
+        call.enqueue(new Callback<ResponseBody>() {
+            //请求成功时回调
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                // 步骤7：处理返回的数据结果
+                try {
+                    String jsonStr = new String(response.body().bytes());
+                    KLog.d(jsonStr);
+                    JSONArray data = new JSONArray(jsonStr);
+                    tangramEngine.setData(data);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    KLog.e(Log.getStackTraceString(e));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    KLog.e(Log.getStackTraceString(e));
+                }
             }
-            KLog.d("onBitmapLoaded" + from);
-        }
 
-        @Override
-        public void onBitmapFailed(Drawable errorDrawable) {
-            if (mListener != null) {
-                mListener.onImageLoadFailed();
+            //请求失败时回调
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable throwable) {
+                KLog.e("连接失败");
             }
-            KLog.d("onBitmapFailed ");
-        }
-
-        @Override
-        public void onPrepareLoad(Drawable placeHolderDrawable) {
-            KLog.d("onPrepareLoad ");
-        }
+        });
     }
+
 }
