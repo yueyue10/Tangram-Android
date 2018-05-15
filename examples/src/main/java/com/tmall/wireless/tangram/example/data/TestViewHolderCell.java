@@ -42,10 +42,7 @@ public class TestViewHolderCell extends BaseCell<TextView> {
     @Override
     public void bindView(@NonNull TextView view) {
         TextView textView = view;
-        textView.setText(
-                id + " pos: " + pos + " " + parent.getClass().getSimpleName() + " " + optParam(
-                        "msg"));
-
+        textView.setText(id + " pos: " + pos + " " + parent.getClass().getSimpleName() + " " + optParam("msg"));
         if (pos > 57) {
             textView.setBackgroundColor(0x66cccf00 + (pos - 50) * 128);
         } else if (pos % 2 == 0) {
@@ -53,6 +50,7 @@ public class TestViewHolderCell extends BaseCell<TextView> {
         } else {
             textView.setBackgroundColor(0xccfafafa);
         }
+        textView.setOnClickListener(this);
     }
 
     @Override

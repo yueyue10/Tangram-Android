@@ -24,6 +24,7 @@
 
 package com.tmall.wireless.tangram.example.support;
 
+import com.socks.library.KLog;
 import com.tmall.wireless.tangram.structure.BaseCell;
 import com.tmall.wireless.tangram.support.SimpleClickSupport;
 
@@ -43,6 +44,11 @@ public class SampleClickSupport extends SimpleClickSupport {
     @Override
     public void defaultClick(View targetView, BaseCell cell, int eventType) {
         super.defaultClick(targetView, cell, eventType);
+        KLog.d(cell.id);
+        KLog.d(cell.pos);
+        KLog.d(cell.position);
+        KLog.d(cell.style);
+        KLog.d(cell.extras);
         Toast.makeText(targetView.getContext(), " 您点击了组件  type:"+cell.type, Toast.LENGTH_SHORT).show();
     }
 }

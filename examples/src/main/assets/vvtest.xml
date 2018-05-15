@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ MIT License
   ~
   ~ Copyright (c) 2018 Alibaba Group
@@ -23,53 +22,49 @@
   ~ SOFTWARE.
   -->
 
-<FrameLayout
-        flag="flag_exposure|flag_clickable"
-        action="action"
-        layoutWidth="match_parent"
-        layoutHeight="84rp"
-        background="#FFFFFF">
+<FrameLayout action="action"
+    background="#FFFFFF"
+    flag="flag_exposure|flag_clickable"
+    layoutHeight="84rp"
+    layoutWidth="match_parent"
+    xmlns="http://schemas.vv.com/apk/res/vv">
 
-    <NImage
-            layoutWidth="48rp"
-            layoutHeight="48rp"
-            layoutMarginLeft="34rp"
-            layoutGravity="left|v_center"
-            src="${imgUrl}"
-            scaleType="center_crop"
-    />
-    <NText
-            layoutWidth="wrap_content"
-            layoutHeight="wrap_content"
-            layoutMarginLeft="94rp"
-            text="${title}"
-            layoutGravity="left|v_center"
-            textSize="28rp"
-            textColor="#555555"
-    />
-    <NText
-            layoutWidth="wrap_content"
-            layoutHeight="wrap_content"
-            layoutMarginRight="50rp"
-            layoutGravity="right|v_center"
-            textSize="28rp"
-            text="${subtitle}"
-            textColor="${subtitleColor}"/>
-    <NImage
-            layoutWidth="14rp"
-            layoutHeight="30rp"
-            layoutMarginRight="28rp"
-            layoutGravity="right|v_center"
-            src="${arrowImgUrl}"
-            scaleType="center_crop"
-    />
+    <NImage layoutGravity="left|v_center"
+        layoutHeight="48rp"
+        layoutMarginLeft="34rp"
+        layoutWidth="48rp"
+        flag="flag_clickable"
+        action="啊哈哈"
+        scaleType="center_crop"
+        src="${imgUrl}" />
 
-    <NLine
-            layoutWidth="680rp"
-            layoutHeight="1rp"
-            orientation="H"
-            layoutGravity="h_center|bottom"
-            src="${lineImgUrl}"
-            color="#999999"
-    />
+    <NText layoutGravity="left|v_center"
+        layoutHeight="wrap_content"
+        layoutMarginLeft="94rp"
+        layoutWidth="wrap_content"
+        text="${title}"
+        textColor="#555555"
+        textSize="28rp" />
+
+    <NText layoutGravity="right|v_center"
+        layoutHeight="wrap_content"
+        layoutMarginRight="50rp"
+        layoutWidth="wrap_content"
+        text="${subtitle}"
+        textColor="${subtitleColor}"
+        textSize="28rp" />
+
+    <NImage layoutGravity="right|v_center"
+        layoutHeight="30rp"
+        layoutMarginRight="28rp"
+        layoutWidth="14rp"
+        scaleType="center_crop"
+        src="${arrowImgUrl}" />
+
+    <NLine color="#999999"
+        layoutGravity="h_center|bottom"
+        layoutHeight="1rp"
+        layoutWidth="680rp"
+        orientation="H"
+        src="${lineImgUrl}" />
 </FrameLayout>

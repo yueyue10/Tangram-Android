@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    targetNamespace='http://schemas.vv.com/apk/res/vv'
+    xmlns='http://schemas.vv.com/apk/res/vv'>
+
+
+    <!--公共属性-->
+    <xs:attribute name='id'
+        type='xs:int' />
+
+    <xs:attribute name="layoutWidth">
+        <xs:simpleType>
+            <xs:union memberTypes="xs:string">
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='match_parent' />
+                        <xs:enumeration value='wrap_content' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name="layoutHeight">
+        <xs:simpleType>
+            <xs:union memberTypes="xs:anyType">
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='match_parent' />
+                        <xs:enumeration value='wrap_content' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name='layoutGravity'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='left' />
+                        <xs:enumeration value='right' />
+                        <xs:enumeration value='top' />
+                        <xs:enumeration value='bottom' />
+                        <xs:enumeration value='v_center' />
+                        <xs:enumeration value='h_center' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name='autoDimX'
+        type='xs:anyType' />
+    <xs:attribute name='autoDimY'
+        type='xs:anyType' />
+    <xs:attribute name='autoDimDirection'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='X' />
+                        <xs:enumeration value='Y' />
+                        <xs:enumeration value='NONE' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name='minWidth'
+        type='xs:anyType' />
+    <xs:attribute name='minHeight'
+        type='xs:anyType' />
+    <xs:attribute name='padding'
+        type='xs:anyType' />
+    <xs:attribute name='paddingLeft'
+        type='xs:anyType' />
+    <xs:attribute name='paddingRight'
+        type='xs:anyType' />
+    <xs:attribute name='paddingTop'
+        type='xs:anyType' />
+    <xs:attribute name='paddingBottom'
+        type='xs:anyType' />
+    <xs:attribute name='layoutMargin'
+        type='xs:anyType' />
+    <xs:attribute name='layoutMarginLeft'
+        type='xs:anyType' />
+    <xs:attribute name='layoutMarginRight'
+        type='xs:anyType' />
+    <xs:attribute name='layoutMarginTop'
+        type='xs:anyType' />
+    <xs:attribute name='layoutMarginBottom'
+        type='xs:anyType' />
+    <xs:attribute name='background'
+        type='xs:int' />
+    <xs:attribute name='borderWidth'
+        type='xs:anyType' />
+    <xs:attribute name='borderColor'
+        type='xs:int' />
+    <xs:attribute name='borderRadius'
+        type='xs:anyType' />
+    <xs:attribute name='borderTopLeftRadius'
+        type='xs:anyType' />
+    <xs:attribute name='borderTopRightRadius'
+        type='xs:anyType' />
+    <xs:attribute name='borderBottomLeftRadius'
+        type='xs:anyType' />
+    <xs:attribute name='borderBottomRightRadius'
+        type='xs:anyType' />
+
+    <xs:attribute name='visibility'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='visible' />
+                        <xs:enumeration value='invisible' />
+                        <xs:enumeration value='gone' />
+                        <xs:enumeration value='@{${xxUrl} ? visible : invisible }' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name='action'
+        type='xs:string' />
+    <xs:attribute name='class'
+        type='xs:string' />
+    <xs:attribute name='onClick'
+        type='xs:string' />
+
+    <xs:attribute name='flag'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='flag_software' />
+                        <xs:enumeration value='flag_exposure' />
+                        <xs:enumeration value='flag_clickable' />
+                        <xs:enumeration value='flag_longclickable' />
+                        <xs:enumeration value='flag_touchable' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <!--自定义属性-->
+    <xs:attribute name='text'
+        type='xs:string' />
+    <xs:attribute name='name'
+        type='xs:string' />
+    <xs:attribute name='native'
+        type='xs:string' />
+    <xs:attribute name='textColor'
+        type='xs:int' />
+    <xs:attribute name='textSize'
+        type='xs:anyType' />
+    <xs:attribute name='textStyle'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='normal' />
+                        <xs:enumeration value='bold' />
+                        <xs:enumeration value='italic' />
+                        <xs:enumeration value='strike' />
+                        <xs:enumeration value='underline' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name='ellipsize'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='none' />
+                        <xs:enumeration value='start' />
+                        <xs:enumeration value='marquee' />
+                        <xs:enumeration value='middle' />
+                        <xs:enumeration value='end' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name='lines'
+        type='xs:int' />
+    <xs:attribute name='lineHeight'
+        type='xs:int' />
+    <xs:attribute name='maxLines'
+        type='xs:int' />
+    <xs:attribute name='lineSpaceMultiplier'
+        type='xs:anyType' />
+    <xs:attribute name='lineSpaceExtra'
+        type='xs:anyType' />
+    <xs:attribute name='supportHTMLStyle'
+        type='xs:anyType' />
+    <xs:attribute name='gravity'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='left' />
+                        <xs:enumeration value='right' />
+                        <xs:enumeration value='top' />
+                        <xs:enumeration value='bottom' />
+                        <xs:enumeration value='v_center' />
+                        <xs:enumeration value='h_center' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name='src'
+        default="${xxImgUrl}"
+        type='xs:string' />
+    <!--VImage属性特征这里没有使用-->
+    <xs:simpleType name="scaleType0">
+        <xs:restriction base='xs:NMTOKEN'>
+            <xs:enumeration value='fit_start' />
+            <xs:enumeration value='fit_xy' />
+            <xs:enumeration value='matrix' />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!--NImage属性特征这里没有使用-->
+    <xs:simpleType name="scaleType1">
+        <xs:restriction base='xs:NMTOKEN'>
+            <xs:enumeration value='fit_start' />
+            <xs:enumeration value='fit_xy' />
+            <xs:enumeration value='matrix' />
+            <xs:enumeration value='center' />
+            <xs:enumeration value='center_crop' />
+            <xs:enumeration value='center_inside' />
+            <xs:enumeration value='fit_center' />
+            <xs:enumeration value='fit_end' />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:attribute name='color'
+        default="black"
+        type='xs:string' />
+    <xs:attribute name='paintWidth'
+        type='xs:int' />
+
+    <xs:attribute name='orientation'
+        default="H">
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='H' />
+                        <xs:enumeration value='V' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name='style'
+        default="solid">
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='solid' />
+                        <xs:enumeration value='dash' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name='dashEffect'
+        default="1"
+        type='xs:string' />
+    <xs:attribute name='diameterX'
+        type='xs:anyType' />
+    <xs:attribute name='diameterY'
+        type='xs:anyType' />
+
+    <xs:attribute name='paintStyle'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='stroke' />
+                        <xs:enumeration value='fill' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name='type'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='circle' />
+                        <xs:enumeration value='rect' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name='initValue'
+        type='xs:int' />
+    <xs:attribute name='onPageFlip'
+        type='xs:explicitGroup' />
+    <xs:attribute name='autoSwitch'
+        type='xs:boolean' />
+    <xs:attribute name='canSlide'
+        type='xs:boolean' />
+    <xs:attribute name='stayTime'
+        type='xs:int' />
+    <xs:attribute name='autoSwitchTime'
+        type='xs:int' />
+    <xs:attribute name='dataTag'
+        default="${data}"
+        type='xs:anyType' />
+    <xs:attribute name='animatorTime'
+        type='xs:int' />
+
+    <xs:attribute name='layoutOrientation'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='normal' />
+                        <xs:enumeration value='reverse' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name='animationStyle'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='linear' />
+                        <xs:enumeration value='decelerate' />
+                        <xs:enumeration value='accelerate' />
+                        <xs:enumeration value='accelerateDecelerate' />
+                        <xs:enumeration value='spring' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name='mode'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='staggeredGrid' />
+                        <xs:enumeration value='linear' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name='onAutoRefresh'
+        type='xs:anyType' />
+    <xs:attribute name='autoRefreshThreshold'
+        type='xs:int' />
+    <xs:attribute name='span'
+        type='xs:anyType' />
+    <xs:attribute name='lineSpace'
+        type='xs:int' />
+    <xs:attribute name='firstSpace'
+        type='xs:int' />
+    <xs:attribute name='lastSpace'
+        type='xs:int' />
+    <xs:attribute name='itemWidth'
+        type='xs:anyType' />
+    <xs:attribute name='onScroll'
+        type='xs:anyType' />
+    <xs:attribute name='order'
+        type='xs:int' />
+    <xs:attribute name='layoutRatio'
+        type='xs:anyType' />
+
+    <xs:attribute name='colCount'
+        type='xs:int' />
+    <xs:attribute name='itemHeight'
+        type='xs:anyType' />
+    <xs:attribute name='itemVerticalMargin'
+        type='xs:anyType' />
+    <xs:attribute name='itemHorizontalMargin'
+        type='xs:anyType' />
+
+    <xs:attribute name='layoutDirection'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='staggeredGrid' />
+                        <xs:enumeration value='left' />
+                        <xs:enumeration value='top' />
+                        <xs:enumeration value='right' />
+                        <xs:enumeration value='bottom' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name='itemMargin'
+        type='xs:anyType' />
+
+    <xs:attribute name='flex-direction'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='row' />
+                        <xs:enumeration value='column' />
+                        <xs:enumeration value='row-reverse' />
+                        <xs:enumeration value='column-reverse' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name='flex-wrap'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='nowrap' />
+                        <xs:enumeration value='wrap' />
+                        <xs:enumeration value='wrap-reverse' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name='justify-content'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='flex-start' />
+                        <xs:enumeration value='center' />
+                        <xs:enumeration value='flex-end' />
+                        <xs:enumeration value='space-between' />
+                        <xs:enumeration value='space-around' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name='align-content'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='stretch' />
+                        <xs:enumeration value='flex-start' />
+                        <xs:enumeration value='center' />
+                        <xs:enumeration value='flex-end' />
+                        <xs:enumeration value='space-between' />
+                        <xs:enumeration value='space-around' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+    <xs:attribute name='align-items'>
+        <xs:simpleType>
+            <xs:union memberTypes='xs:string'>
+                <xs:simpleType>
+                    <xs:restriction base='xs:NMTOKEN'>
+                        <xs:enumeration value='stretch' />
+                        <xs:enumeration value='flex-start' />
+                        <xs:enumeration value='center' />
+                        <xs:enumeration value='flex-end' />
+                        <xs:enumeration value='baseline' />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:union>
+        </xs:simpleType>
+    </xs:attribute>
+
+</xs:schema>

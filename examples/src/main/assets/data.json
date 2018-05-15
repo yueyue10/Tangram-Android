@@ -1,14 +1,14 @@
 [
   {
     "type": "container-oneColumn",
-    //      container-oneColumn：单列(一排一)
+    //container-oneColumn：单列(一排一)
     "items": [
       {
         "imgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
         "arrowImgUrl": "https://gw.alicdn.com/tfs/TB1vqF.PpXXXXaRaXXXXXXXXXXX-110-72.png",
         "title": "标题1",
         "type": "vvtest",
-        //        vvtest是引用assets.xml里面的vvtest.xml布局
+        //vvtest是引用assets.xml里面的vvtest.xml布局
         "subtitle": "副标题1"
       },
       {

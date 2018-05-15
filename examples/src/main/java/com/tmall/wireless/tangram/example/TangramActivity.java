@@ -24,10 +24,25 @@
 
 package com.tmall.wireless.tangram.example;
 
-import com.alibaba.android.vlayout.Range;
-
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.alibaba.android.vlayout.Range;
 import com.libra.Utils;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Picasso.LoadedFrom;
@@ -48,50 +63,27 @@ import com.tmall.wireless.tangram.example.data.VVTEST;
 import com.tmall.wireless.tangram.example.support.SampleClickSupport;
 import com.tmall.wireless.tangram.structure.BaseCell;
 import com.tmall.wireless.tangram.structure.viewcreator.ViewHolderCreator;
-import com.tmall.wireless.tangram.support.BannerSupport;
-import com.tmall.wireless.tangram.support.RxBannerScrolledListener.ScrollEvent;
 import com.tmall.wireless.tangram.support.async.AsyncLoader;
 import com.tmall.wireless.tangram.support.async.AsyncPageLoader;
 import com.tmall.wireless.tangram.support.async.CardLoadSupport;
 import com.tmall.wireless.tangram.util.IInnerImageSetter;
-
-import com.tmall.wireless.tangram.util.ImageUtils;
 import com.tmall.wireless.vaf.framework.VafContext;
 import com.tmall.wireless.vaf.virtualview.Helper.ImageLoader.IImageLoaderAdapter;
 import com.tmall.wireless.vaf.virtualview.Helper.ImageLoader.Listener;
+import com.tmall.wireless.vaf.virtualview.event.EventData;
+import com.tmall.wireless.vaf.virtualview.event.EventManager;
+import com.tmall.wireless.vaf.virtualview.event.IEventProcessor;
 import com.tmall.wireless.vaf.virtualview.view.image.ImageBase;
-import io.reactivex.Observable;
-import io.reactivex.Scheduler;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
 
 /**
  * Created by villadora on 15/8/18.
@@ -104,6 +96,7 @@ public class TangramActivity extends Activity {
     TangramEngine engine;
     TangramBuilder.InnerBuilder builder;
     RecyclerView recyclerView;
+    TextView first, last, count;
 
     private static class ImageTarget implements Target {
 
@@ -148,12 +141,15 @@ public class TangramActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         recyclerView = (RecyclerView) findViewById(R.id.main_view);
+        first = (TextView) findViewById(R.id.first);
+        last = (TextView) findViewById(R.id.last);
+        count = (TextView) findViewById(R.id.count);
 
         //Step 1: init tangram
         TangramBuilder.init(this.getApplicationContext(), new IInnerImageSetter() {
             @Override
             public <IMAGE extends ImageView> void doLoadImageUrl(@NonNull IMAGE view,
-                    @Nullable String url) {
+                                                                 @Nullable String url) {
                 Picasso.with(TangramActivity.this.getApplicationContext()).load(url).into(view);
             }
         }, ImageView.class);
@@ -169,16 +165,23 @@ public class TangramActivity extends Activity {
         builder.registerCell(10, SimpleImgView.class);
         builder.registerCell(2, SimpleImgView.class);
         builder.registerCell(4, RatioTextView.class);
-        builder.registerCell(110,
-                TestViewHolderCell.class,
-                new ViewHolderCreator<>(R.layout.item_holder, TestViewHolder.class, TextView.class));
-        builder.registerCell(199,SingleImageView.class);
+        builder.registerCell(110, TestViewHolderCell.class, new ViewHolderCreator<>(R.layout.item_holder, TestViewHolder.class, TextView.class));
+        builder.registerCell(199, SingleImageView.class);
         builder.registerVirtualView("vvtest");
 //        builder.registerVirtualView("Debug");
         //Step 4: new engine
         engine = builder.build();
         engine.setVirtualViewTemplate(VVTEST.BIN);
         engine.setVirtualViewTemplate(DEBUG.BIN);
+        engine.getService(VafContext.class).getEventManager().register(EventManager.TYPE_Click, new IEventProcessor() {
+
+            @Override
+            public boolean process(EventData data) {
+                //handle here
+                Toast.makeText(TangramActivity.this, data.mVB.getAction(), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
         engine.getService(VafContext.class).setImageLoaderAdapter(new IImageLoaderAdapter() {
 
             private List<ImageTarget> cache = new ArrayList<ImageTarget>();
@@ -297,6 +300,13 @@ public class TangramActivity extends Activity {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 engine.onScrolled();
+                LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                int firstVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition();//可见范围内的第一项的位置
+                int lastVisibleItemPosition = linearLayoutManager.findLastVisibleItemPosition();//可见范围内的最后一项的位置
+                int itemCount = linearLayoutManager.getItemCount();//recyclerview中的item的所有的数目
+                first.setText("first:" + firstVisibleItemPosition);
+                last.setText("last:" + lastVisibleItemPosition);
+                count.setText("count:" + itemCount);
             }
         });
 
@@ -331,7 +341,6 @@ public class TangramActivity extends Activity {
             if (inputStream == null) {
                 return null;
             }
-
             BufferedInputStream bis = null;
             int length;
             try {
@@ -352,14 +361,10 @@ public class TangramActivity extends Activity {
                     }
                 }
             }
-
             return null;
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return null;
     }
-
-
 }

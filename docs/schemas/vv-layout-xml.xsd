@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:vv="http://schemas.vv.com/apk/res/vv"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://schemas.vv.com/apk/res/vv"
+        schemaLocation="schemas.vv.com.apk.res.vv.xsd" />
+
+    <xs:group name="any-view">
+        <xs:choice>
+            <xs:element ref="NText" />
+            <xs:element ref="VText" />
+            <xs:element ref="NImage" />
+            <xs:element ref="VImage" />
+            <xs:element ref="NLine" />
+            <xs:element ref="VLine" />
+            <xs:element ref="VGraph" />
+            <xs:element ref="Progress" />
+            <xs:element ref="Page" />
+            <xs:element ref="Scroller" />
+            <xs:element ref="Slider" />
+            <xs:element ref="Container" />
+            <xs:element ref="FrameLayout" />
+            <xs:element ref="RatioLayout" />
+            <xs:element ref="Grid" />
+            <xs:element ref="GridLayout" />
+            <xs:element ref="VH2Layout" />
+            <xs:element ref="VHLayout" />
+            <xs:element ref="VH" />
+            <xs:element ref="FlexLayout" />
+            <xs:element ref="NFrameLayout" />
+            <xs:element ref="NRatioLayout" />
+            <xs:element ref="NGridLayout" />
+            <xs:element ref="NVH2Layout" />
+            <xs:element ref="NVHLayout" />
+            <xs:element ref="TotalContainer" />
+        </xs:choice>
+    </xs:group>
+
+    <xs:element name="View"
+        type="View" />
+    <!--给每个view定义属性-->
+    <xs:complexType name="View">
+        <xs:attribute ref="vv:id" />
+        <xs:attribute ref="vv:layoutWidth" />
+        <xs:attribute ref="vv:layoutHeight" />
+        <xs:attribute ref="vv:layoutGravity" />
+        <xs:attribute ref="vv:autoDimX" />
+        <xs:attribute ref="vv:autoDimY" />
+        <xs:attribute ref="vv:autoDimDirection" />
+        <xs:attribute ref="vv:minWidth" />
+        <xs:attribute ref="vv:minHeight" />
+        <xs:attribute ref="vv:padding" />
+        <xs:attribute ref="vv:paddingLeft" />
+        <xs:attribute ref="vv:paddingRight" />
+        <xs:attribute ref="vv:paddingTop" />
+        <xs:attribute ref="vv:paddingBottom" />
+        <xs:attribute ref="vv:layoutMargin" />
+        <xs:attribute ref="vv:layoutMarginLeft" />
+        <xs:attribute ref="vv:layoutMarginRight" />
+        <xs:attribute ref="vv:layoutMarginTop" />
+        <xs:attribute ref="vv:layoutMarginBottom" />
+        <xs:attribute ref="vv:background" />
+        <xs:attribute ref="vv:borderWidth" />
+        <xs:attribute ref="vv:borderColor" />
+        <xs:attribute ref="vv:borderRadius" />
+        <xs:attribute ref="vv:borderTopLeftRadius" />
+        <xs:attribute ref="vv:borderTopRightRadius" />
+        <xs:attribute ref="vv:borderBottomLeftRadius" />
+        <xs:attribute ref="vv:borderBottomRightRadius" />
+        <xs:attribute ref="vv:visibility" />
+        <xs:attribute ref="vv:dataTag" />
+        <xs:attribute ref="vv:flag" />
+        <xs:attribute ref="vv:action" />
+        <xs:attribute ref="vv:class" />
+        <xs:attribute ref="vv:onClick" />
+    </xs:complexType>
+
+    <xs:element name="NText"
+        type="NText">
+        <xs:annotation>
+            <xs:documentation>
+                原生实现的文本组件，通过模板里定义可绑定以下属性：字体颜色、字号大小、字体粗细、支持文本对齐，行数，最大行数，行间距，行间距系数，截断方式。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="NText"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:attribute ref="vv:text" />
+                <xs:attribute ref="vv:textColor" />
+                <xs:attribute ref="vv:textSize" />
+                <xs:attribute ref="vv:textStyle" />
+                <xs:attribute ref="vv:ellipsize" />
+                <xs:attribute ref="vv:lines" />
+                <xs:attribute ref="vv:lineHeight" />
+                <xs:attribute ref="vv:maxLines" />
+                <xs:attribute ref="vv:lineSpaceMultiplier" />
+                <xs:attribute ref="vv:lineSpaceExtra" />
+                <xs:attribute ref="vv:supportHTMLStyle" />
+                <xs:attribute ref="vv:gravity" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="VText"
+        type="VText">
+        <xs:annotation>
+            <xs:documentation>
+                虚拟化实现的文本组件，精简了大量原生文本的特性，只支持以下几个特性：字体颜色、字号大小、字体粗细、支持文本对齐，只能单行显示，不支持分多行。不支持响应点击事件。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="VText"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:attribute ref="vv:text" />
+                <xs:attribute ref="vv:textColor" />
+                <xs:attribute ref="vv:textSize" />
+                <xs:attribute ref="vv:textStyle" />
+                <xs:attribute ref="vv:gravity" />
+                <xs:attribute ref="vv:lines" />
+                <xs:attribute ref="vv:layoutRatio" />
+                <xs:attribute ref="vv:ellipsize" />
+                <xs:attribute ref="vv:name" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="NImage"
+        type="NImage">
+        <xs:annotation>
+            <xs:documentation>原生图片组件，支持加载本地图片或者网络图片，支持所有的缩放模式。业务方需要提供一个 IImageLoaderAdapter
+                才能加载图片。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="NImage"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:attribute ref="vv:src" />
+                <xs:attribute name="scaleType">
+                    <xs:simpleType>
+                        <xs:restriction base='xs:NMTOKEN'>
+                            <xs:enumeration value='fit_start' />
+                            <xs:enumeration value='fit_xy' />
+                            <xs:enumeration value='matrix' />
+                            <xs:enumeration value='center' />
+                            <xs:enumeration value='center_crop' />
+                            <xs:enumeration value='center_inside' />
+                            <xs:enumeration value='fit_center' />
+                            <xs:enumeration value='fit_end' />
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="VImage"
+        type="VImage">
+        <xs:annotation>
+            <xs:documentation>虚拟化实现的图片组件，支持加载本地图片或者网络图片，支持基本的缩放模式。</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="VImage"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:attribute ref="vv:src" />
+                <xs:attribute name="scaleType">
+                    <xs:simpleType>
+                        <xs:restriction base='xs:NMTOKEN'>
+                            <xs:enumeration value='fit_start' />
+                            <xs:enumeration value='fit_xy' />
+                            <xs:enumeration value='matrix' />
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="NLine"
+        type="NLine">
+        <xs:annotation>
+            <xs:documentation>实体进度条组件，支持实线、虚线，可以使用横向显示、竖向显示。</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="NLine"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:attribute ref="vv:color" />
+                <xs:attribute ref="vv:paintWidth" />
+                <xs:attribute ref="vv:orientation" />
+                <xs:attribute ref="vv:style" />
+                <xs:attribute ref="vv:dashEffect" />
+                <xs:attribute ref="vv:gravity" />
+                <xs:attribute ref="vv:layoutDirection" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="VLine"
+        type="VLine">
+        <xs:annotation>
+            <xs:documentation>虚拟化线条，支持实线、虚线，可以使用横向显示、竖向显示。</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="VLine"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:attribute ref="vv:color" />
+                <xs:attribute ref="vv:paintWidth" />
+                <xs:attribute ref="vv:orientation" />
+                <xs:attribute ref="vv:style" />
+                <xs:attribute ref="vv:dashEffect" />
+                <xs:attribute ref="vv:gravity" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="VGraph"
+        type="VGraph">
+        <xs:annotation>
+            <xs:documentation>
+                虚拟化图片组件，显示圆形、矩形。当为圆形时，区域宽高由layoutWidth、layoutParam或者diameterX、diameterY决定。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="VGraph"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:attribute ref="vv:color" />
+                <xs:attribute ref="vv:type" />
+                <xs:attribute ref="vv:paintStyle" />
+                <xs:attribute ref="vv:paintWidth" />
+                <xs:attribute ref="vv:diameterX" />
+                <xs:attribute ref="vv:diameterY" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Progress"
+        type="Progress">
+        <xs:annotation>
+            <xs:documentation>
+                虚拟化进度条组件，横向显示，整体进度由背景色显示，当前进度由前景色显示，总进度为组件的宽度。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="Progress"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:attribute ref="vv:initValue" />
+                <xs:attribute ref="vv:color" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!--基础容器控件-->
+
+    <xs:element name="Page"
+        type="Page">
+        <xs:annotation>
+            <xs:documentation>
+                翻页滚动的组件，与Scroller和Slider的区别在于它是有页面效果，一页一页滚动，而Scroller、Slider是可连续滚动。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="Page"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:attribute ref="vv:orientation" />
+                <xs:attribute ref="vv:onPageFlip" />
+                <xs:attribute ref="vv:autoSwitch" />
+                <xs:attribute ref="vv:canSlide" />
+                <xs:attribute ref="vv:stayTime" />
+                <xs:attribute ref="vv:autoSwitchTime" />
+                <xs:attribute ref="vv:dataTag" />
+                <xs:attribute ref="vv:animatorTime" />
+                <xs:attribute ref="vv:layoutOrientation" />
+                <xs:attribute ref="vv:animationStyle" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Scroller"
+        type="Scroller">
+        <xs:annotation>
+            <xs:documentation>
+                页面级别的容器组件，在Android上采用Recycler+StaggeredGridLayoutManager实现。通过数据驱动绑定其他组件。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="Scroller"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:attribute ref="vv:orientation" />
+                <xs:attribute ref="vv:mode" />
+                <xs:attribute ref="vv:onAutoRefresh" />
+                <xs:attribute ref="vv:autoRefreshThreshold" />
+                <xs:attribute ref="vv:span" />
+                <xs:attribute ref="vv:lineSpace" />
+                <xs:attribute ref="vv:firstSpace" />
+                <xs:attribute ref="vv:lastSpace" />
+                <xs:attribute ref="vv:dataTag" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Slider"
+        type="Slider">
+        <xs:annotation>
+            <xs:documentation>
+                实体水平滚动的组件容器，支持内部组件的回收复用。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="Slider"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:attribute ref="vv:orientation" />
+                <xs:attribute ref="vv:itemWidth" />
+                <xs:attribute ref="vv:span" />
+                <xs:attribute ref="vv:onScroll" />
+                <xs:attribute ref="vv:dataTag" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Container"
+        type="Container">
+        <xs:annotation>
+            <xs:documentation>
+                虚拟化的布局容器，无特殊的布局逻辑，主要是在其他虚拟组件上加一层坑，无特殊功能。支持通过数据动态创建子组件。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="Container"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:attribute ref="vv:order" />
+                <xs:attribute ref="vv:dataTag" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="FrameLayout"
+        type="FrameLayout">
+        <xs:annotation>
+            <xs:documentation>
+                虚拟化的帧布局，主要提供了布局协议，不支持通过数据动态创建子组件，需要在布局模板里直接写子组件。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="FrameLayout"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:group maxOccurs="unbounded"
+                    minOccurs="0"
+                    ref="any-view" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="RatioLayout"
+        type="RatioLayout">
+        <xs:annotation>
+            <xs:documentation>
+                虚拟化的线性布局，其子组件支持写layoutRatio属性来声明在父容器空间上占用的比例，声明过layoutRatio的组件按比例分配宽或高，未声明layoutRatio的组件占用剩余的空间。不支持通过数据动态创建子组件，需要在布局模板里直接写子组件。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="RatioLayout"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:group maxOccurs="unbounded"
+                    minOccurs="0"
+                    ref="any-view" />
+                <xs:attribute ref="vv:orientation" />
+                <xs:attribute ref="vv:layoutRatio" />
+                <xs:attribute ref="vv:gravity" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Grid"
+        type="Grid">
+        <xs:annotation>
+            <xs:documentation>
+                实体网格布局容器，支持通过数据动态创建子组件。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="Grid"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:attribute ref="vv:colCount" />
+                <xs:attribute ref="vv:itemHeight" />
+                <xs:attribute ref="vv:itemVerticalMargin" />
+                <xs:attribute ref="vv:itemHorizontalMargin" />
+                <xs:attribute ref="vv:dataTag" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="GridLayout"
+        type="GridLayout">
+        <xs:annotation>
+            <xs:documentation>
+                虚拟化的网格布局，与Grid的区别是它是虚拟的，主要提供了布局协议，不支持通过数据动态创建子组件，需要在布局模板里直接写子组件。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="GridLayout"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:group maxOccurs="unbounded"
+                    minOccurs="0"
+                    ref="any-view" />
+                <xs:attribute ref="vv:colCount" />
+                <xs:attribute ref="vv:itemHeight" />
+                <xs:attribute ref="vv:itemVerticalMargin" />
+                <xs:attribute ref="vv:itemHorizontalMargin" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="VH2Layout"
+        type="VH2Layout">
+        <xs:annotation>
+            <xs:documentation>
+                虚拟化的线性布局，与VHLayout的区别是它支持子组件分别从top、left、right、bottom四个方向进行布局。不支持通过数据动态创建子组件，需要在布局模板里直接写子组件。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="VH2Layout"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:group maxOccurs="unbounded"
+                    minOccurs="0"
+                    ref="any-view" />
+                <xs:attribute ref="vv:orientation" />
+                <xs:attribute ref="vv:layoutDirection" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="VHLayout"
+        type="VHLayout">
+        <xs:annotation>
+            <xs:documentation>
+                虚拟化的线性布局，与VH的区别是它是虚拟的，主要提供了布局协议，不支持通过数据动态创建子组件，需要在布局模板里直接写子组件。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="VHLayout"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:group maxOccurs="unbounded"
+                    minOccurs="0"
+                    ref="any-view" />
+                <xs:attribute ref="vv:orientation" />
+                <xs:attribute ref="vv:gravity" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="VH"
+        type="VH">
+        <xs:annotation>
+            <xs:documentation>
+                实体的线性布局，支持通过数据动态创建子组件。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="VH"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:attribute ref="vv:orientation" />
+                <xs:attribute ref="vv:itemWidth" />
+                <xs:attribute ref="vv:itemHeight" />
+                <xs:attribute ref="vv:itemMargin" />
+                <xs:attribute ref="vv:dataTag" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="FlexLayout"
+        type="FlexLayout">
+        <xs:annotation>
+            <xs:documentation>
+                虚拟化的Flex布局，Flex协议的虚拟化实现。但是只实现了部分功能，与标准的Flex布局协议还存在一些差距。不支持通过数据动态创建子组件，需要在布局模板里直接写子组件。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="FlexLayout"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:attribute ref="vv:flex-direction" />
+                <xs:attribute ref="vv:flex-wrap" />
+                <xs:attribute ref="vv:justify-content" />
+                <xs:attribute ref="vv:align-content" />
+                <xs:attribute ref="vv:align-items" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="NFrameLayout"
+        type="NFrameLayout">
+        <xs:complexType mixed="false">
+            <xs:annotation>
+                <xs:documentation>
+                    实体的帧布局，主要提供了布局协议，不支持通过数据动态创建子组件，需要在布局模板里直接写子组件。虚拟的子组件会绘制到它的 canvas 上而不是整个大容器的
+                    canvas，实体的子组件也会添加到它内部，因此在 borderRadius 属性的作用下会裁剪内部区域，除此之外与 FrameLayout 的功能完全一致。
+                </xs:documentation>
+            </xs:annotation>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="NFrameLayout"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:group maxOccurs="unbounded"
+                    minOccurs="0"
+                    ref="any-view" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="NRatioLayout"
+        type="NRatioLayout">
+        <xs:annotation>
+            <xs:documentation>
+                实体的线性布局，其子组件支持写 layoutRatio 属性来声明在父容器空间上占用的比例，声明过layoutRatio的组件按比例分配宽或高，未声明
+                layoutRatio 的组件占用剩余的空间。不支持通过数据动态创建子组件，需要在布局模板里直接写子组件。虚拟的子组件会绘制到它的 canvas 上而不是整个大容器的
+                canvas，实体的子组件也会添加到它内部，因此在 borderRadius 属性的作用下会裁剪内部区域，除此之外与 RatioLayout 的功能完全一致。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="NRatioLayout"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:group maxOccurs="unbounded"
+                    minOccurs="0"
+                    ref="any-view" />
+                <xs:attribute ref="vv:orientation" />
+                <xs:attribute ref="vv:layoutRatio" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="NGridLayout"
+        type="NGridLayout">
+        <xs:annotation>
+            <xs:documentation>
+                实体的网格布局，主要提供了布局协议，不支持通过数据动态创建子组件，需要在布局模板里直接写子组件。虚拟的子组件会绘制到它的 canvas 上而不是整个大容器的
+                canvas，实体的子组件也会添加到它内部，因此在 borderRadius 属性的作用下会裁剪内部区域，除此之外与 GridLayout 的功能完全一致。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="NGridLayout"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:group maxOccurs="unbounded"
+                    minOccurs="0"
+                    ref="any-view" />
+                <xs:attribute ref="vv:colCount" />
+                <xs:attribute ref="vv:itemHeight" />
+                <xs:attribute ref="vv:itemVerticalMargin" />
+                <xs:attribute ref="vv:itemHorizontalMargin" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="NVH2Layout"
+        type="NVH2Layout">
+        <xs:annotation>
+            <xs:documentation>
+                实体的线性布局，不支持通过数据动态创建子组件，需要在布局模板里直接写子组件。虚拟的子组件会绘制到它的 canvas 上而不是整个大容器的
+                canvas，实体的子组件也会添加到它内部，因此在 borderRadius 属性的作用下会裁剪内部区域，除此之外与 VH2Layout 的功能完全一致。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="NVH2Layout"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:group maxOccurs="unbounded"
+                    minOccurs="0"
+                    ref="any-view" />
+                <xs:attribute ref="vv:orientation" />
+                <xs:attribute ref="vv:layoutDirection" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="NVHLayout"
+        type="NVHLayout">
+        <xs:annotation>
+            <xs:documentation>
+                实体的线性布局，主要提供了布局协议，不支持通过数据动态创建子组件，需要在布局模板里直接写子组件。虚拟的子组件会绘制到它的 canvas 上而不是整个大容器的
+                canvas，实体的子组件也会添加到它内部，因此在 borderRadius 属性的作用下会裁剪内部区域，除此之外与 VHLayout 的功能完全一致。
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="NVHLayout"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:group maxOccurs="unbounded"
+                    minOccurs="0"
+                    ref="any-view" />
+                <xs:attribute ref="vv:orientation" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="TotalContainer"
+        type="TotalContainer">
+        <xs:annotation>
+            <xs:documentation>
+                应该和Container类似，api没有介绍
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="TotalContainer"
+        mixed="false">
+        <xs:complexContent mixed="false">
+            <xs:extension base="View">
+                <xs:group maxOccurs="unbounded"
+                    minOccurs="0"
+                    ref="any-view" />
+                <xs:attribute ref="vv:native" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>
