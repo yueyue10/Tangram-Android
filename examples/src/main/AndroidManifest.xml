@@ -50,6 +50,7 @@
         <activity android:name="com.tmall.wireless.tangram.example.TangramDataParserActivity">
         </activity>
         <activity android:name="com.zyj.ui.TravelsAc"/>
+        <activity android:name="com.zyj.ui.JdHomeAc"/>
     </application>
 
 </manifest>

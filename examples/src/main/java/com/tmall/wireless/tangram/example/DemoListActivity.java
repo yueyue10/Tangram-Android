@@ -39,6 +39,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.zyj.ui.JdHomeAc;
 import com.zyj.ui.TravelsAc;
 
 /**
@@ -71,6 +72,10 @@ public class DemoListActivity extends ListActivity {
         travels.put("name", "行程单列表");
         travels.put("class", TravelsAc.class.getName());
         list.add(travels);
+        HashMap<String, String> jdhome = new HashMap<String, String>();
+        jdhome.put("name", "京东首页");
+        jdhome.put("class", JdHomeAc.class.getName());
+        list.add(jdhome);
         ListAdapter listAdapter = new SimpleAdapter(this, list, android.R.layout.simple_list_item_1, new String[]{"name"}, new int[]{android.R.id.text1});
         setListAdapter(listAdapter);
     }

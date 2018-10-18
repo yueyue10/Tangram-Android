@@ -1,0 +1,43 @@
+[
+  {
+    "id": "banner1",
+    "type": "container-banner",
+    //container-banner:轮播图布局
+    "style": {
+      "indicatorMargin": "5",
+      "infinite": "true",
+      "indicatorImg2": "https://img.alicdn.com/tps/TB1XRNFNXXXXXXKXXXXXXXXXXXX-32-4.png",
+      "indicatorImg1": "https://img.alicdn.com/tps/TB16i4qNXXXXXbBXFXXXXXXXXXX-32-4.png",
+      "scrollMarginLeft": "10",
+      "indicatorGap": "2",
+      "indicatorHeight": "1.5",
+      "itemRatio": "2.654",
+      "scrollMarginRight": "10",
+      "indicatorGravity": "center",
+      "hGap": "20",
+      "height": 200
+    },
+    "items": [
+      {
+        "type": 2,
+        "imgUrl": "http://img4.imgtn.bdimg.com/it/u=1658878532,757715090&fm=27&gp=0.jpg"
+      },
+      {
+        "type": 2,
+        "imgUrl": "http://img1.imgtn.bdimg.com/it/u=4288279443,2438827616&fm=27&gp=0.jpg"
+      },
+      {
+        "type": 2,
+        "imgUrl": "http://img4.imgtn.bdimg.com/it/u=3806549913,3383784833&fm=27&gp=0.jpg"
+      },
+      {
+        "type": 2,
+        "imgUrl": "http://img4.imgtn.bdimg.com/it/u=965858583,3448116989&fm=27&gp=0.jpg"
+      },
+      {
+        "type": 2,
+        "imgUrl": "http://img5.imgtn.bdimg.com/it/u=966185025,3301197266&fm=27&gp=0.jpg"
+      }
+    ]
+  }
+]
